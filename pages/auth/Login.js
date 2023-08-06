@@ -1,11 +1,12 @@
-// pages/auth/Login.js
-
-import { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 // Styles
 import styles from '../../styles/Auth.module.scss';
+// Actions
+import { login } from '../../redux/actions/authActions';
 
 const LoginSchema = Yup.object().shape({
   username: Yup.string().required('Username is required'),
@@ -13,38 +14,13 @@ const LoginSchema = Yup.object().shape({
 });
 
 const Login = () => {
-  const [loginError, setLoginError] = useState('');
   const router = useRouter();
+  const dispatch = useDispatch(); // Get the dispatch function from Redux
+  const loginError = useSelector((state) => state.auth.error); // Get the error from Redux
 
+  // Call the action from Redux
   const handleLogin = async (values) => {
-    try {
-      // Send a POST request to Strapi with the username and password.
-      const response = await fetch('http://localhost:1337/auth/local', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      });
-
-      const data = await response.json();
-
-      // Handle success or error.
-      if (data.message) {
-        // Handle error.
-        setLoginError(data.message[0].messages[0].message);
-        return;
-      }
-
-      // Save token to local storage.
-      localStorage.setItem('token', data.token);
-
-      // Redirect to home page.
-      router.push('/');
-    } catch (error) {
-      // Handle error.
-      setLoginError('Invalid username or password provided!');
-    }
+    dispatch(login(values));
   };
 
   return (
