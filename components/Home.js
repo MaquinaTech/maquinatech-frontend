@@ -1,6 +1,4 @@
-// components/App.js
-
-const App = () => {
+const Home = () => {
   return (
     <div>
       <h1>Bienvenido al home principal</h1>
@@ -8,4 +6,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;
