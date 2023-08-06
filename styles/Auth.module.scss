@@ -7,53 +7,59 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
 
-.container__title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
+  &___title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
 
-.container__field {
-  margin-bottom: 15px;
-}
+  &__field {
+    margin-bottom: 15px;
+  }
 
-.container__label {
-  display: block;
-  font-weight: bold;
-}
+  &__label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  &__input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  &__error {
+    color: red;
+    margin-top: 5px;
+  }
+  
+  &__button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  
+  &__button:hover {
+    background-color: #0056b3;
+  }
+  
+  &__button:disabled {
+    background-color: #d1d1d1;
+    cursor: not-allowed;
+  }
 
-.container__input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.container__error {
-  color: red;
-  margin-top: 5px;
-}
-
-.container__button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 20px;
-  font-size: 16px;
-}
-
-.container__button:hover {
-  background-color: #0056b3;
-}
-
-.container__button:disabled {
-  background-color: #d1d1d1;
-  cursor: not-allowed;
+  &__link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+  }
 }
