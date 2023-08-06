@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -50,8 +51,17 @@ const Login = () => {
               />
             <ErrorMessage name="password" component="div" className={styles.container__error} />
           </div>
+
+
           {loginError && <div className={styles.container__error}>{loginError}</div>}
           <button type="submit" className={styles.container__button}>Iniciar sesión</button>
+
+          <div className={styles.container__field__register}>
+            <Link href="/auth/register" className={styles.container__link}>
+                Crear cuenta
+            </Link>
+          </div>
+          
         </Form>
       </Formik>
     </div>
