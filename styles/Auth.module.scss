@@ -54,10 +54,20 @@
   
   &__input {
     font-family: 'samsung';
-    width: 100%;
+    width: 75px;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 5px;
+    outline: none;
+    background-color: #ececec;
+    transition: width 0.8s ease;
+    transform-origin: left;
+  
+    &__active {
+      width: 300px;
+      transition: width 0.8s ease;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
   }
   
   &__error {
@@ -111,6 +121,5 @@
     outline: none;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
-
 
 }

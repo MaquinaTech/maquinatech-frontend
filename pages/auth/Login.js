@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,6 +19,19 @@ const Login = () => {
   const dispatch = useDispatch(); // Get the dispatch function from Redux
   const loginError = useSelector((state) => state.auth.error); // Get the error from Redux
 
+  const [isActiveUsername, setIsActiveUsername] = useState(false);
+  const [isActivePassword, setIsActivePassword] = useState(false);
+
+  // Input focus handlers
+  const handleFocus = (field) => {
+    if (field === 'username') setIsActiveUsername(true);
+    if (field === 'password') setIsActivePassword(true);
+  };
+  const handleBlur = (field) => {
+    if (field === 'username') setIsActiveUsername(false);
+    if (field === 'password') setIsActivePassword(false);
+  };
+
   // Call the action from Redux
   const handleLogin = async (values) => {
     dispatch(login(values));
@@ -38,7 +51,9 @@ const Login = () => {
             <Field 
               type="text" 
               name="username"
-              className={styles.container__input}
+              className={isActiveUsername ? `${styles.container__input__active} ${styles.container__input}` : styles.container__input}
+              onFocus={() => handleFocus('username')}
+              onBlur={() => handleBlur('username')}
               />
             <ErrorMessage name="username" component="div" className={styles.container__error} />
           </div>
@@ -47,7 +62,9 @@ const Login = () => {
             <Field 
               type="password" 
               name="password" 
-              className={styles.container__input}
+              className={isActivePassword ? `${styles.container__input__active} ${styles.container__input}` : styles.container__input}
+              onFocus={() => handleFocus('password')}
+              onBlur={() => handleBlur('password')}
               />
             <ErrorMessage name="password" component="div" className={styles.container__error} />
           </div>
@@ -61,7 +78,7 @@ const Login = () => {
                 Crear cuenta
             </Link>
           </div>
-          
+
         </Form>
       </Formik>
     </div>
