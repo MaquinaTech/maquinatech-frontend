@@ -1,39 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
-// Redux
-import { useSelector } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
+import store from './redux/store';
 
-const App = () => {
+const AppContent = () => {
   const router = useRouter();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const isAuthenticated = useSelector(state => state.auth.user !== null);
 
-  useEffect(() => {
-    // Check authentication status when the component mounts on the client-side.
-    const isAuthenticated = checkAuthentication();
-    setIsAuthenticated(isAuthenticated);
-
-    if (!isAuthenticated) {
-      router.replace('/auth/Login');
-    }
-  }, [router]);
+  if (!isAuthenticated) {
+    // Redirect to login page if not authenticated
+    router.replace('/auth/Login');
+    return null;
+  }
 
   return (
     <div>
-      {/* Content of the App page */}
-      {isAuthenticated && <h1>Welcome to the protected App page</h1>}
+      <h1>Welcome to the protected App page</h1>
     </div>
   );
 };
 
-// This function checks if the user is authenticated.
-function checkAuthentication() {
-  // When running on the client-side (in the browser), we can access localStorage.
-  if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('token');
-    return !!token; // Return true if the user is logged in, false otherwise.
-  }
-  return false;
-}
+const App = () => {
+  return (
+    <Provider store={store}> {/* Agregamos el componente Provider */}
+      <AppContent />
+    </Provider>
+  );
+};
 
 export async function getServerSideProps(context) {
   return {
