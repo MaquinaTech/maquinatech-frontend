@@ -1,9 +1,9 @@
-// pages/Index.js
-
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+// Redux
+import { useSelector } from 'react-redux';
 
-const Index = () => {
+const App = () => {
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -19,13 +19,13 @@ const Index = () => {
 
   return (
     <div>
-      {/* Content of the Index page */}
-      {isAuthenticated && <h1>Welcome to the protected Index page</h1>}
+      {/* Content of the App page */}
+      {isAuthenticated && <h1>Welcome to the protected App page</h1>}
     </div>
   );
 };
 
-// Your authentication check logic function.
+// This function checks if the user is authenticated.
 function checkAuthentication() {
   // When running on the client-side (in the browser), we can access localStorage.
   if (typeof window !== 'undefined') {
@@ -37,8 +37,8 @@ function checkAuthentication() {
 
 export async function getServerSideProps(context) {
   return {
-    props: {}, // Will be passed to the page component as props
+    props: {},
   };
 }
 
-export default Index;
+export default App;
