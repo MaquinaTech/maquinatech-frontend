@@ -34,15 +34,6 @@
     transition: width 0.8s ease;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
-
-  &__animation {
-    position:relative;
-    right: 17px;
-    top:10px;
-    width: 30px;
-    height: 30px;
-    transform: scaleX(-1);
-  }
   
   &__error {
     font-family: 'samsung-medium';

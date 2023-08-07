@@ -16,22 +16,14 @@ const LoginSchema = Yup.object().shape({
 });
 
 const Login = () => {
+
   const router = useRouter();
-  const dispatch = useDispatch(); // Get the dispatch function from Redux
-  const loginError = useSelector((state) => state.auth.error); // Get the error from Redux
 
-  /*const [isActiveUsername, setIsActiveUsername] = useState(false);
-  const [isActivePassword, setIsActivePassword] = useState(false);
-
-  // Input focus handlers
-  const handleFocus = (field) => {
-    if (field === 'username') setIsActiveUsername(true);
-    if (field === 'password') setIsActivePassword(true);
-  };
-  const handleBlur = (field) => {
-    if (field === 'username') setIsActiveUsername(false);
-    if (field === 'password') setIsActivePassword(false);
-  };*/
+  // Get the dispatch function from Redux
+  const dispatch = useDispatch();
+  
+  // Get the error from Redux
+  const loginError = useSelector((state) => state.auth.error); 
 
   // Call the action from Redux
   const handleLogin = async (values) => {
