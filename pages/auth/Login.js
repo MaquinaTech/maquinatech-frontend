@@ -54,7 +54,11 @@ const Login = () => {
           <div className={styles.info__text__profile}>
             <p>
               <span className={styles.bold}>GitHub: </span>
-              <span className={styles.medium}>https://github.com/MaquinaTech</span>
+              <span className={styles.medium}>
+                <Link href="https://github.com/MaquinaTech" target='_blank'>
+                <img src="/gitHub.png" alt="gitHub" className={styles.info__text__profile__git}/>
+                </Link>
+              </span>
             </p>
           </div>    
         </div>
@@ -69,34 +73,6 @@ const Login = () => {
           onSubmit={handleLogin}
         >
           <Form>
-            {/*<div className={styles.login__field}>
-              <label className={styles.login__label}>Nombre de usuario:</label>
-              { isActiveUsername && <div className={styles.blank}></div> }
-              <Field 
-                type="text" 
-                name="username"
-                className={isActiveUsername ? `${styles.login__input__active} ${styles.login__input}` : styles.login__input}
-                onFocus={() => handleFocus('username')}
-                onBlur={() => handleBlur('username')}
-                />
-              { !isActiveUsername && <img src="/push.svg" alt="Animación" className={styles.login__animation} /> }
-              <ErrorMessage name="username" component="div" className={styles.login__error} />
-            </div>
-
-            
-            <div className={styles.login__field}>
-            <label className={styles.login__label}>Contraseña:</label>
-            { isActivePassword && <div className={styles.blank}></div> }
-            <Field 
-                type="password" 
-                name="password" 
-                className={isActivePassword ? `${styles.login__input__active} ${styles.login__input}` : styles.login__input}
-                onFocus={() => handleFocus('password')}
-                onBlur={() => handleBlur('password')}
-                />
-              { !isActivePassword && <img src="/push.svg" alt="Animación" className={styles.login__animation} /> }
-              <ErrorMessage name="password" component="div" className={styles.login__error} />
-            </div>*/}
 
             <Input 
               labelText="Nombre de usuario"
