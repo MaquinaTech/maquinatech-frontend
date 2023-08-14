@@ -1,7 +1,7 @@
 // src/redux/actions/authActions.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000'; // Reemplaza con la URL de tu API
+const API_URL = 'http://localhost:8000';
 
 // Action for login user (get token)
 export const login = (username, password) => async (dispatch) => {

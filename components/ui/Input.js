@@ -39,8 +39,9 @@ const Input = ({ labelText, type, name }) => {
 
 Input.propTypes = {
   labelText: PropTypes.string.isRequired,
-  handleFocus: PropTypes.func.isRequired,
-  handleBlur: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+
 };
 
 export default Input;
